@@ -164,9 +164,12 @@ def load_waypoints(filename):
 
 async def main():
     num_obstacles = 20
-    robot = Robot(0, 0, 0, 1.0, 1.0, 0.1)
+    robot = Robot(0, 0, 0, 1.0, 1.0, 0.1) # (initial_x,initial_y, v_max, w_max, dt)
+    # v_max is the maximum velocity possible for the robot.
+    # w_max is the maximum rotational velocity possible for the robot.
+    #initial_x and intial_y are the initial coordinates of the robot.
     waypoints  = load_waypoints('waypoints.txt')[:2,:]
-    obstacles = np.array([(random.uniform(0,30), random.uniform(0,30)) for _ in range(num_obstacles)])
+    obstacles = np.array([(random.uniform(0,30), random.uniform(0,30)) for _ in range(num_obstacles)]) # Obstacles are randomly generated
 
     radius = 1.0
     _, ax = plt.subplots(figsize=(8,5))
